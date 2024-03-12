@@ -70,9 +70,9 @@ begin
     //BRN x9
     instructionMem[14] = 10110000000010010000000000000000;
 
-    instruction = instructionMem[address];
 end
 
 always@(negedge  clk)
+    instruction = instructionMem[address];
 
 endmodule
