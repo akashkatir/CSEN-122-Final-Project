@@ -24,7 +24,6 @@ module instruction_memory(output reg [31:0] instruction, input [7:0] address, in
 reg [31:0] instructionMem [255:0];
 
 
-always@(negedge  clk)
 begin
     //LD x6, x2
     instructionMem[0] = 11100001100000100000000000000000;
@@ -73,4 +72,7 @@ begin
 
     instruction = instructionMem[address];
 end
+
+always@(negedge  clk)
+
 endmodule
