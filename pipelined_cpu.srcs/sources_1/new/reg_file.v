@@ -29,6 +29,11 @@ module register_file(output reg [31:0] rt_out,
                     input write, 
                     input clk );
 reg [31:0] registers [5:0];
+
+initial
+begin
+    registers[0] = 32'b0000_0000_0000_0000_0000_0000_0000_0000;
+end
                     
 always@(negedge clk)
 begin

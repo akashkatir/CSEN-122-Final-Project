@@ -43,17 +43,13 @@ end
 initial 
 begin
 
-// update pcIn to change instruction fetch (no automatic increment as we only have If stage implemented in this tb
+// loop pc through # of instructions in I-cache
+for(integer i = 0; i < 16; i = i +1)
+begin
+    #10
+    pcIn = i;
+end
 
-// change below values with real decoded instructions
-// test pc = 0
-// instr = ffffffff
-# 20
-
-// test pc = 1 after next clock cycle
-// instr = 00ff00ff after next clock cycle
-pcIn = 1;
-#20
 
 $finish;
 end
