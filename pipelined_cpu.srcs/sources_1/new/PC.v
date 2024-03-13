@@ -30,7 +30,7 @@ begin
     PCout = 0;
 end
 
-always@(negedge clock)
+always@(PCin)
 begin
     if(PCin != 0)
         PCout = PCin;

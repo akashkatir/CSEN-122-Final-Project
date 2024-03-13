@@ -20,7 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module CPU(
+module CPU(input clock);
 
-    );
+PC pc();
+instruction_memory();
+if_id_buffer();
+register_file();
+control_unit();
 endmodule
