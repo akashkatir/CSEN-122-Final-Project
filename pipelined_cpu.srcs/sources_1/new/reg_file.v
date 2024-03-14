@@ -33,6 +33,16 @@ reg [31:0] registers [5:0];
 initial
 begin
     registers[0] = 32'b0000_0000_0000_0000_0000_0000_0000_0000;
+    registers[1] = 0;
+    registers[2] = 0; // starting address of data to find max
+    registers[3] = 4 ; // n-1 numbers to compare
+    registers[4] = 0;
+    registers[5] = 0;
+    registers[6] = 0;
+    registers[7] = 0;
+    registers[8] = 0;
+    registers[9] = 0;
+    registers[10] = 0;
 end
                     
 always@(negedge clk)
