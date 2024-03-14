@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module control_unit(opcode, regWrite, aluSrc, aluOp, savePc, memWrite, memRead, MemtoReg, branch, jump);
+module control_unit(opcode, regWrite, aluSrc, aluOp, savePc, memWrite, memRead, MemtoReg, branch_neg, branch_zero, jump);
 input [3:0] opcode;
 output reg [2:0] aluOp;
 output reg [1:0] aluSrc;
-output reg regWrite, savePc, memWrite, memRead, MemtoReg, branch, jump;
+output reg regWrite, savePc, memWrite, memRead, MemtoReg, branch_neg, branch_zero, jump;
 
 always@(opcode)
 begin
@@ -38,7 +38,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -51,7 +52,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -64,7 +66,8 @@ begin
      memWrite = 0;
      memRead = 1;
      MemtoReg = 1;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -77,7 +80,8 @@ begin
      memWrite = 1;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -90,7 +94,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -103,7 +108,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -116,7 +122,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -129,7 +136,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 0;
 end
 
@@ -142,7 +150,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 0;
+     branch_neg = 0;
+     branch_zero = 0;
      jump = 1;
 end
 
@@ -155,7 +164,8 @@ begin
      memWrite = 0;
      memRead = 0;    
      MemtoReg = 0;
-     branch = 1;
+     branch_neg = 0;
+     branch_zero = 1;
      jump = 0;
 end
 
@@ -168,7 +178,8 @@ begin
      memWrite = 0;
      memRead = 0;
      MemtoReg = 0;
-     branch = 1;
+     branch_neg = 1;
+     branch_zero = 0;
      jump = 0;
 end
 
