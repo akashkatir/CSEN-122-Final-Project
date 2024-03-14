@@ -29,6 +29,15 @@ module data_memory(output reg [31:0] data_out,
 // Limit memory to 2^16 address for simulation purposes
 reg [31:0] memory [65535:0];
 
+initial
+begin
+    memory[0] = 5;
+    memory[1] = 10;
+    memory[2] = 15;
+    memory[3] = 1;
+    memory[4] = 100;
+end
+
 always@(negedge clk)
 begin
     if(read)begin

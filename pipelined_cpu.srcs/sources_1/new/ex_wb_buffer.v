@@ -36,7 +36,7 @@ begin
     out_mem_to_reg = in_mem_to_reg;
     out_reg_wrt = in_reg_wrt;
     out_alu_output = in_alu_output;
-    out_data_mem_output = in_data_output;
+    out_data_mem_output = in_data_mem_output;
     out_rd = in_rd;
 
 end              
