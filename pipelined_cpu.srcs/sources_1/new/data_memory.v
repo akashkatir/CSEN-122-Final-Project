@@ -31,20 +31,22 @@ reg [31:0] memory [65535:0];
 
 initial
 begin
-    memory[0] = 5;
-    memory[1] = 10;
-    memory[2] = 15;
-    memory[3] = 1;
-    memory[4] = 100;
+    memory[0] = 0;
+    memory[1] = 0;
+    memory[2] = 31;
+    memory[3] = 1024;
+    memory[4] = 9;
+    memory[5] = -2048;
+    memory[6] = 10;
 end
 
 always@(negedge clk)
 begin
-    if(read)begin
+    if(read == 1)begin
         data_out = memory[address[15:0]];
     end
     
-    if(write)begin
+    if(write == 1)begin
         memory[address[15:0]] = data_in;
     end
 end

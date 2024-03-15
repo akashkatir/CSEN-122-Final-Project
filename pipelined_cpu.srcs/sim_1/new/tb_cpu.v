@@ -34,8 +34,7 @@ if_id_buffer if_stage(clock, i_cache_out, pc_out, if_instruction_out, if_pc_out)
 
 
 // ID stage
-wire reg_wrt, save_pc, mem_wrt, mem_rd, mem_2_reg, branch_neg, branch_zero, jump;
-wire [1:0] alu_src;
+wire reg_wrt, alu_src, save_pc, mem_wrt, mem_rd, mem_2_reg, branch_neg, branch_zero, jump;
 wire [2:0] alu_op;
 wire [31:0] xrs, xrt, immidiate, pc_adder_out;
 wire pc_mux_select;
@@ -52,9 +51,8 @@ adder32 pc_adder(if_pc_out, 1, pc_adder_out);
 TwoToOneMux pc_mux(pc_adder_out, xrs , pc_mux_select, pc_in);
 
 // ID/EX
-wire id_reg_wrt, id_mem_2_reg, id_mem_wrt, id_mem_rd, id_save_pc;
+wire id_reg_wrt, id_alu_src,  id_mem_2_reg, id_mem_wrt, id_mem_rd, id_save_pc;
 wire [2:0] id_alu_op;
-wire [1:0] id_alu_src;
 wire [31:0] id_pc, id_imm, id_xrs, id_xrt;
 wire [5:0] id_rd;
 
@@ -64,8 +62,8 @@ id_ex_buffer id_stage(clock, reg_wrt, mem_2_reg, mem_wrt, mem_rd, alu_op, alu_sr
 // EX stage
 wire Z, N;
 wire [31:0] b_src_mux_out, a_src_mux_out, alu_out, data_out;
-FourToOneMux alu_b_src_mux(.A(id_xrt),.B( id_imm), .C(id_xrs), .select(id_alu_src),.out(b_src_mux_out));
-TwoToOneMux alu_a_src_mux(id_xrs, id_pc, id_save_pc, a_src_mux_out);
+TwoToOneMux alu_b_src_mux(.A(id_xrt),.B( id_imm), .select(id_alu_src),.out(a_src_mux_out));
+TwoToOneMux alu_a_src_mux(id_xrs, id_pc, id_save_pc, b_src_mux_out);
 ALU alu(a_src_mux_out, b_src_mux_out, id_alu_op, alu_out, Z, N );
 data_memory d_cache(data_out, id_xrt, id_xrs, id_mem_rd, id_mem_wrt, clock);
 
@@ -83,7 +81,7 @@ TwoToOneMux mem_2_reg_mux(ex_alu_out, ex_data_out, ex_mem_2_reg, xrd);
 initial
 begin
     clock = 0;
-    forever #5 clock = ~clock;
+    forever #2 clock = ~clock;
 end
 
 initial
@@ -93,7 +91,7 @@ begin
 //begin
 //    #10;
 //end
-#885;
+#1000;
 
 $finish;
 end
