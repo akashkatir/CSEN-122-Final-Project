@@ -33,10 +33,13 @@ begin
      3'b111:
         out = A;
      endcase
-N = out[31]&1;
+N = out[31];
 if(out == 0)begin
 Z = 1;
 end
+else begin
+Z = 0;
+end;
      
 end
 endmodule
@@ -44,7 +47,7 @@ endmodule
 
 module adder32(input [31:0] A, input [31:0] B, output reg [31:0] out);
 
-always@(A, B)
+always@(*)
 begin
     out = A + B;
 end

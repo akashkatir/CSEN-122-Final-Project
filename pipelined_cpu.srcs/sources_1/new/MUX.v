@@ -26,7 +26,7 @@ module FourToOneMux(input [31:0] A,
                     input [31:0] D, 
                     input [1:0] select, 
                     output reg [31:0] out);
-always@*
+always@(*)
 begin
     case(select)
      2'b00:
@@ -43,7 +43,7 @@ endmodule
 
 module TwoToOneMux(input [31:0] A, input [31:0] B, input select, output reg [31:0] out);
 
-always@*
+always@(*)
 begin
     case(select)
      1'b0:

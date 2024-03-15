@@ -89,10 +89,11 @@ end
 initial
 begin
 
-for(integer i = 0; i < 50; i = i+1)
-begin
-    #10;
-end
+//for(integer i = 0; i < 90; i = i+1)
+//begin
+//    #10;
+//end
+#885;
 
 $finish;
 end

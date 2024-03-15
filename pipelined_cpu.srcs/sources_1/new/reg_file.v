@@ -28,11 +28,11 @@ module register_file(output reg [31:0] rt_out,
                     input [5:0] rs, 
                     input write, 
                     input clk );
-reg [31:0] registers [5:0];
+reg [31:0] registers [63:0] ;
 
 initial
 begin
-    registers[0] = 32'b0000_0000_0000_0000_0000_0000_0000_0000;
+    registers[0] = 0;
     registers[1] = 0;
     registers[2] = 0; // starting address of data to find max
     registers[3] = 4 ; // n-1 numbers to compare
